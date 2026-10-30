@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>AKSHAR ARI WORK — Bill Generator</title>
+    <meta name="description" content="AKSHAR ARI WORK - Professional Bill Generator and Business Management System." />
+    <meta name="theme-color" content="#c40000" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="AKSHAR ARI" />
     <link rel="stylesheet" type="text/css" href="style.css" id="mainStylesheet" />
     <style id="appCoreStyles">
 /* ============================================================
@@ -1539,5 +1549,19 @@ h2, h3 {
 </div>
 
 <script src="script.js"></script>
+<!-- Service Worker Registration for PWA & PWABuilder / APK Packaging -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => {
+                    console.log('AKSHAR ARI WORK: Service Worker registered successfully (scope: ' + reg.scope + ')');
+                })
+                .catch(err => {
+                    console.warn('AKSHAR ARI WORK: Service Worker registration error:', err);
+                });
+        });
+    }
+</script>
 </body>
 </html>
