@@ -41,19 +41,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "shortcuts": [
-    {
-      "name": "New Bill",
-      "short_name": "New Bill",
-      "description": "Create and print a new bill",
-      "url": "/akshar-ari-work-new/",
-      "icons": [
-        {
-          "src": "icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    }
   ]
 }

@@ -4,7 +4,7 @@
    Preserves Real-time Firebase Firestore Sync
    ============================================================ */
 
-const CACHE_NAME = 'akshar-ari-work-v2.1';
+const CACHE_NAME = 'akshar-ari-work-v2.2';
 
 // App shell assets to precache
 const PRECACHE_ASSETS = [
@@ -17,7 +17,13 @@ const PRECACHE_ASSETS = [
     './icons/icon-192.png',
     './icons/icon-512.png',
     './icons/icon-maskable-192.png',
-    './icons/icon-maskable-512.png'
+    './icons/icon-maskable-512.png',
+    './icon-192.png',
+    './icon-512.png',
+    './icon-maskable-192.png',
+    './icon-maskable-512.png',
+    './favicon.ico',
+    './favicon.png'
 ];
 
 // 1. INSTALL: Precache local shell assets immediately
@@ -26,9 +32,13 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
             console.log('[ServiceWorker] Precaching app shell assets');
-            return cache.addAll(PRECACHE_ASSETS).catch(err => {
-                console.warn('[ServiceWorker] Precache partial warning:', err);
-            });
+            return Promise.all(
+                PRECACHE_ASSETS.map(url => {
+                    return cache.add(url).catch(err => {
+                        console.warn('[ServiceWorker] Precache skipped for:', url, err);
+                    });
+                })
+            );
         })
     );
 });
